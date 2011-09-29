@@ -3,9 +3,12 @@ FFProbe for NodeJS
 
 A simple wrapper around ffprobe written in NodeJS
 
+***This module requires ffmpeg to be installed before it can function***.  The ffmpeg package comes bundled with ffprobe.
+
 Installation
 ----------
 
+    sudo apt-get install ffmpeg
     npm install node-ffprobe
 
 Usage
