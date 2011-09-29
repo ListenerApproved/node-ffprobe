@@ -1,0 +1,107 @@
+include ./Makedefs
+
+# Explicit rules
+# the main command, invoked with make 
+# these are the format supported
+
+.phony= all clean realclean distclean dist usbbar_dist revision_id++ dist++ stats
+
+all:
+	@for dir in ${subdirs}; do \
+	  (cd $$dir && $(MAKE) all) \
+	  || case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+
+install:
+	@for dir in ${subdirs}; do \
+	  (cd $$dir && $(MAKE) install) \
+	  || case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+
+uninstall:
+	@for dir in ${subdirs}; do \
+	  (cd $$dir && $(MAKE) uninstall) \
+	  || case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+
+clean:
+	/bin/rm -f *~
+	@for dir in ${subdirs}; do \
+	  (cd $$dir && $(MAKE) clean) \
+	  || case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+
+distclean: clean
+	/bin/rm -f Makefile config.h config.status config.cache config.log
+	@for dir in ${subdirs}; do \
+	  (cd $$dir && $(MAKE) distclean) \
+	  || case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+
+realclean: clean
+	/bin/rm -f Makefile config.h config.status config.cache config.log
+	@for dir in ${subdirs}; do \
+	  (cd $$dir && $(MAKE) realclean) \
+	  || case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+
+SOURCE_FILES=configure.in Makefile.in Makedefs.in version.sh show-version.sh \
+	AUTHORS INSTALL README COPYING.GPL COPYING.LGPL \
+	src/Makefile.in src/ffprobe.c src/cmdutils.h src/cmdutils.c \
+	doc/Makefile.in doc/ffprobe.texi doc/texi2pod.pl doc/ffprobe.fish \
+	tools/*
+
+DIST_FILES=$(SOURCE_FILES) configure install-sh mkinstalldirs \
+	src/version.h \
+	doc/ffprobe.html doc/ffprobe.1
+
+MANIFEST: $(DIST_FILES)
+	ls $(DIST_FILES) | sed -ne 's:^:$(package_version_name)/:p' > MANIFEST
+
+TAGS:
+	etags *.[ch] src/*.[ch]
+
+# a rule to make snapshots
+dist: all
+	tar -czf $(package_version_name).tar.gz $(DIST_FILES)
+	mkdir $(package_version_name)
+	tar -xzf $(package_version_name).tar.gz -C $(package_version_name)
+	rm $(package_version_name).tar.gz
+	tar -czf $(package_version_name).tar.gz $(package_version_name)
+#	@echo "Placing the snapshot for anonymous ftp in " $(FTPDIR)
+#	rcp $(package_version_name) $(FTPDIR)
+	@echo "Removing temporary directory: "
+	rm -rf $(package_version_name)
+
+# eventually mount the usbbar, create a dist file in the usbbar, then unmount it
+USBBAR_DIR=/media/usbbar
+usbbar_dist: dist
+	mount | grep $(USBBAR_DIR) || mount $(USBBAR_DIR)
+	cp $(DIST_DIR)/$(revision_name).tar.gz $(USBBAR_DIR) 
+	umount $(USBBAR_DIR) 
+
+stats:
+	@echo "source_files_num:" $(shell ls $(SOURCE_FILES) | wc -l)
+	@echo "source_lines_num:" $(shell cat $(SOURCE_FILES) | wc -l)
+
+# automatic re-running of configure if the configure.in file has changed
+configure: configure.in
+	autoconf
+
+# autoheader might not change config.h.in, so touch a stamp file
+# ${srcdir}/config.h.in: stamp-h.in
+
+# ${srcdir}/stamp-h.in: configure.in aclocal.m4
+# 	cd ${srcdir} && autoheader
+# 	echo timestamp > ${srcdir}/stamp-h.in
+
+# config.h: stamp-h
+
+# stamp-h: config.h.in config.status
+# 	./config.status
+
+config.status: configure
+	./config.status --recheck
+
+Makefile: Makefile.in config.status
+	./config.status

@@ -1,0 +1,30 @@
+include ../Makedefs
+
+# tranformation chain:
+# texi - (texi2html) -> HTML
+# texi - (texi2pod) -> pod - (pod2man) -> man
+%.html: %.texi
+	texi2html -monolithic -number $<
+
+%.pod: %.texi
+	./texi2pod.pl $< $@
+
+%.1: %.pod
+	pod2man --section=1 --center=" " --release=" " $< > $@
+
+all: ffprobe.1 ffprobe.html
+
+install: ffprobe.1
+	$(INSTALL) -d "$(mandir)"
+	$(INSTALL) -m 644 $< "$(mandir)"
+
+uninstall :
+	/bin/rm -f "$(mandir)/ffprobe.1"
+
+clean:
+	/bin/rm -f ffprobe.1 ffprobe.html ffprobe.pod
+
+distclean: clean
+	/bin/rm -f Makefile
+
+realclean: distclean

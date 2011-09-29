@@ -1,0 +1,55 @@
+DESCRIPTION
+===========
+
+FF-probe is a simple multimedia streams analyzer with a command-line 
+interface based on the FFmpeg project libraries.
+
+FFmpeg web site is available at:
+http://ffmpeg.mplayerhq.hu/
+
+DOWNLOAD
+========
+
+This program is hosted at sourceforge. In order to get the last development
+snapshot use the command:
+svn co https://ffprobe.svn.sourceforge.net/svnroot/ffprobe/trunk ffprobe
+
+PREREQUISITES
+=============
+
+In order to compile this package you need Gnu autoconf, a development 
+environment (C compiler and make) and a working installation of the FFmpeg 
+libav* libraries with these version constraints:
+
+libavutil >= 49.4.1
+libavcodec >= 51.40.4
+libavformat >= 51.12.1
+
+which are shipped with FFmpeg SVN >= 9401.
+
+Since many systems come with many libav* installations check that you're
+building against the correct headers and libraries.
+
+The features of the resulting ffprobe compiled binary will depend on the
+features of the corresponding libav* libraries.
+
+In order to run the scripts in the tools dir you need a perl interpreter.
+
+INSTALLATION
+============
+
+This package uses Gnu autotools for packaging.
+
+In order to build and install follow the usual procedure:
+./configure --help
+./configure [<options>]
+make
+make install
+
+In the case the configure file is missing, you need Gnu autoconf to build
+it from configure.in: run the autoconf command to do it.
+
+Also look the INSTALL file for more detailed instructions.
+
+If this procedure fails, please send a bug report to the author[s] of the
+package (look in the AUTHORS file).

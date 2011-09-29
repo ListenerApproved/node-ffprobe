@@ -1,0 +1,1 @@
+#define FFPROBE_VERSION "SVN-r53"

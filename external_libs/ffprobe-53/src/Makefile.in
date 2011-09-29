@@ -1,0 +1,31 @@
+include ../Makedefs
+
+all: ffprobe
+
+version.h:
+	(cd ..; ./version.sh)
+
+cmdutils.o: cmdutils.c cmdutils.h version.h
+	$(CC) -c $(CFLAGS) $< -o $@
+
+ffprobe.o: ffprobe.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+ffprobe: ffprobe.o cmdutils.o
+	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS) $(EXTRA_LIBS)
+
+install: all
+	$(MKINSTALLDIRS) $(bindir)
+	$(INSTALL) ffprobe $(bindir)
+
+uninstall:
+	$(RM) -f $(bindir)/ffprobe 
+
+# removes whatever can be built with make
+clean:
+	$(RM) -f *.o *~ ffprobe version.h
+
+distclean: clean
+
+realclean: clean
+	$(RM) Makefile.in
