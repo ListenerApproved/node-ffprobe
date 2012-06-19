@@ -1,6 +1,6 @@
 {
   "name": "node-ffprobe",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "NodeJS wrapper around ffprobe",
   "keywords": ["ffprobe", "id3"],
   "repository": "git://github.com/ListenerApproved/node-ffprobe.git",
@@ -8,5 +8,5 @@
   "main": "index",
   "contributors": [],
   "dependencies": [],
-  "engines": { "node": ">= 0.4.11" }
+  "engines": { "node": ">= 0.6.0" }
 }
