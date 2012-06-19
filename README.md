@@ -19,7 +19,7 @@ var probe = require('node-ffprobe');
 
 var track = '/path/to/media/file.mp3';
 
-probe(track, function(probeData) {
+probe(track, function(err, probeData) {
 	console.log(probeData);
 });
 ```
