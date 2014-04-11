@@ -15,7 +15,7 @@ Usage
 ----------
 
 ```js
-var probe = require('node-ffprobe');
+var probe = require('node-ffprobe')('/path/to/binary/');
 
 var track = '/path/to/media/file.mp3';
 
@@ -23,6 +23,7 @@ probe(track, function(err, probeData) {
 	console.log(probeData);
 });
 ```
+The '/path/to/binary/' is useful if you embed the lib in your app. Otherwise just leave it ''.
 
 Calling probe will execute ffprobe and parse the data it sends to STDOUT.  A sample object can be seen below.
 
