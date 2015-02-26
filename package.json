@@ -2,11 +2,18 @@
   "name": "node-ffprobe",
   "version": "1.2.2",
   "description": "NodeJS wrapper around ffprobe",
-  "keywords": ["ffprobe", "id3"],
+  "keywords": [
+    "ffprobe",
+    "id3"
+  ],
   "repository": "git://github.com/ListenerApproved/node-ffprobe.git",
   "author": "Thomas Quick <thomas@listenerapproved.com> (http://listenerapproved.com)",
   "main": "index",
   "contributors": [],
-  "dependencies": [],
-  "engines": { "node": ">= 0.6.0" }
+  "dependencies": {
+    "which": "^1.0.9"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  }
 }
