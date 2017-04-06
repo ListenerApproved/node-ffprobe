@@ -16,13 +16,14 @@ Usage
 
 ```js
 var probe = require('node-ffprobe');
-
+probe.FFPROBE_PATH = '/path/to/ffprobe'; //optional
 var track = '/path/to/media/file.mp3';
 
 probe(track, function(err, probeData) {
 	console.log(probeData);
 });
 ```
+FFPROBE_PATH is useful if you embed the lib in your app.
 
 Calling probe will execute ffprobe and parse the data it sends to STDOUT.  A sample object can be seen below.
 
