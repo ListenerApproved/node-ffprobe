@@ -12,8 +12,11 @@ Installation
    
    
    `"dependencies": {
+   
       "node-ffprobe": "git+ssh://git@github.com:ListenerApproved/node-ffprobe.git#master",
-      "@ffprobe-installer/ffprobe": "^1.0.8",
+      
+      "@ffprobe-installer/ffprobe": "^1.0.8"
+      
     }` 
     
     
