@@ -11,7 +11,7 @@ Installation
    Add to `package.json`
    
    
-   `
+   ```
      "dependencies": {
    
         "node-ffprobe": "git+ssh://git@github.com:ListenerApproved/node-ffprobe.git#master",
@@ -19,7 +19,7 @@ Installation
         "@ffprobe-installer/ffprobe": "^1.0.8"
       
      }
-    ` 
+    ```
     
     
 Run
