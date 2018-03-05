@@ -8,18 +8,42 @@ A simple wrapper around ffprobe written in NodeJS
 Installation
 ----------
 
-    sudo apt-get install ffmpeg
-    npm install node-ffprobe
+   Add to `package.json`
+   
+   
+   ```js
+     "dependencies": {
+   
+        "node-ffprobe": "git+ssh://git@github.com:ListenerApproved/node-ffprobe.git#master",
+      
+        "@ffprobe-installer/ffprobe": "^1.0.8"
+      
+     }
+   ```
+    
+    
+    
+
+
+Run
+----------
+ 	$ npm i
+
+
 
 Usage
 ----------
 
 ```js
-var probe = require('node-ffprobe');
-probe.FFPROBE_PATH = '/path/to/ffprobe'; //optional
-var track = '/path/to/media/file.mp3';
+const ffprobe = require('node-ffprobe');
+const ffprobeInstaller = require('@ffprobe-installer/ffprobe');
+console.log(ffprobeInstaller.path, ffprobeInstaller.version);
 
-probe(track, function(err, probeData) {
+ffprobe.FFPROBE_PATH = ffprobeInstaller.path;
+
+var track = '/path/to/media/file.mp3'; // or video
+
+probe(track, (err, probeData) => {
 	console.log(probeData);
 });
 ```
