@@ -1,7 +1,7 @@
 FFProbe for NodeJS
 ==========
 
-A simple wrapper around ffprobe written in NodeJS
+A simple sync wrapper around ffprobe written in NodeJS
 
 ***This module requires ffmpeg to be installed before it can function***.  The ffmpeg package comes bundled with ffprobe.
 
@@ -13,17 +13,10 @@ Installation
    
    ```js
      "dependencies": {
-   
         "node-ffprobe": "git+ssh://git@github.com:ListenerApproved/node-ffprobe.git#master",
-      
         "@ffprobe-installer/ffprobe": "^1.0.8"
-      
      }
    ```
-    
-    
-    
-
 
 Run
 ----------
@@ -50,6 +43,8 @@ probe(track, (err, probeData) => {
 FFPROBE_PATH is useful if you embed the lib in your app.
 
 Calling probe will execute ffprobe and parse the data it sends to STDOUT.  A sample object can be seen below.
+
+Additionnally, you can set `ffprobe.SYNC` to `true` if you want for a particular reason to launch ffprobe synchronously (for example when used in batch processing of files to avoid too many spawns at once.)
 
 The ***streams***, ***format***, and ***metadata*** fields are taken directly from ffprobe.
 ***probe_time*** is the total execution time for the given file.
