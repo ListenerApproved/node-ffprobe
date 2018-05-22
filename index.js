@@ -14,7 +14,7 @@ if(require.main === module) {
 
 	!function probeFile(file) {
 		if(!file) return exit(0, 'Finished probing all files');
-
+		file = '"'+file+'"';
 		ffprobe(file, function(err, results) {
 			console.log('%s\n========================================\n%s\n\n', file, err || JSON.stringify(results, null, '   '));
 
