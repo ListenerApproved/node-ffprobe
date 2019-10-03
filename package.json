@@ -7,6 +7,6 @@
   "author": "Thomas Quick <thomas@listenerapproved.com> (http://listenerapproved.com)",
   "main": "index",
   "contributors": [],
-  "dependencies": [],
+  "dependencies": {},
   "engines": { "node": ">= 0.6.0" }
 }
