@@ -8,5 +8,5 @@
   "main": "index",
   "contributors": [],
   "dependencies": [],
-  "engines": { "node": ">= 0.6.0" }
+  "engines": { "node": ">= 12" }
 }
