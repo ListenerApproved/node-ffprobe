@@ -6,13 +6,18 @@ A simple sync wrapper around ffprobe written in NodeJS
 
 ## Installation
 
-   Install `node-ffprobe` via NPM / Yarn
+```sh
+# regular NPM package install
+npm install --save node-ffprobe
 
-   `$ npm install --save node-ffprobe`
+# install directly from GitHub
+npm install --save github:ListenerApproved/node-ffprobe
 
-   or
-   
-   `$ yarn add node-ffprobe`
+# install NPM package via Yarn
+yarn add node-ffprobe
+```
+
+
 
 ## Run
  	$ npm i
@@ -113,3 +118,8 @@ The JSON returned by this utility is directly produced by ffprobe using the `-pr
    }
 }
 ```
+
+
+## Roadmap
+* Timeouts for async invocation
+* move package to unified nodejs ffmpeg library 
