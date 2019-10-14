@@ -1,12 +1,10 @@
-FFProbe for NodeJS
-==========
+# FFProbe for NodeJS
 
 A simple sync wrapper around ffprobe written in NodeJS
 
 ***This module requires ffmpeg to be installed before it can function***.  The ffprobe utility comes bundled with ffmpeg.  If you just need this to work under multiple configs consider using `@ffprobe-installer/ffprobe` as detailed in the usage example below
 
-Installation
-----------
+## Installation
 
    Install `node-ffprobe` via NPM / Yarn
 
@@ -16,14 +14,12 @@ Installation
    
    `$ yarn add node-ffprobe`
 
-Run
-----------
+## Run
  	$ npm i
 
 
 
-Usage
-----------
+## Usage
 
 ```js
 const ffprobe = require('node-ffprobe')
@@ -47,6 +43,10 @@ Calling probe will execute ffprobe and parse the data it sends to STDOUT.  A sam
 Additionnally, you can set `ffprobe.SYNC` to `true` if you want for a particular reason to launch ffprobe synchronously (for example when used in batch processing of files to avoid too many spawns at once.)
 
 The JSON returned by this utility is directly produced by ffprobe using the `-print_format json` flag
+
+
+### Example Output
+
 
 ```js
 {
