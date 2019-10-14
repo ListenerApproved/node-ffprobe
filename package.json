@@ -7,7 +7,7 @@
     "id3"
   ],
   "repository": "git://github.com/ListenerApproved/node-ffprobe.git",
-  "author": "Thomas Quick <thomas@listenerapproved.com> (http://listenerapproved.com)",
+  "author": "Thomas Quick <severeon@gmail.com>",
   "main": "index",
   "contributors": [],
   "dependencies": {},
