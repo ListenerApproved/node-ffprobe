@@ -27,7 +27,7 @@ yarn add node-ffprobe
 ## Usage
 
 ```js
-const ffprobe = require('node-ffprobe')
+const probe = require('node-ffprobe')
 const ffprobeInstaller = require('@ffprobe-installer/ffprobe')
 
 console.log(ffprobeInstaller.path, ffprobeInstaller.version)
