@@ -94,7 +94,7 @@ The JSON returned by this utility is directly produced by ffprobe using the `-pr
    ],
    "chapters": [],
    "format": {
-      "filename": "/Users/thomas.quick/Downloads/file_example_MP3_5MG.mp3",
+      "filename": "/Users/im.a.little.teapot/Downloads/file_example_MP3_5MG.mp3",
       "nb_streams": 1,
       "nb_programs": 0,
       "format_name": "mp3",
