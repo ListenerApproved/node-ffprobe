@@ -3,7 +3,7 @@ FFProbe for NodeJS
 
 A simple sync wrapper around ffprobe written in NodeJS
 
-***This module requires ffmpeg to be installed before it can function***.  The ffmpeg package comes bundled with ffprobe.
+***This module requires ffmpeg to be installed before it can function***.  The ffprobe utility comes bundled with ffmpeg.
 
 Installation
 ----------
