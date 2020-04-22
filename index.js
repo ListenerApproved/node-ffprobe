@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const ffprobe = module.exports = require('./lib/ffprobe.js')
 
 if (require.main === module) {

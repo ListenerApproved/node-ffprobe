@@ -2,6 +2,7 @@
   "name": "node-ffprobe",
   "version": "3.0.0",
   "description": "NodeJS wrapper around ffprobe",
+  "bin": "./index.js",
   "keywords": [
     "ffprobe",
     "id3"
